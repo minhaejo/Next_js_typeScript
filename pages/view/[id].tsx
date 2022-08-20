@@ -7,7 +7,7 @@ import ProductInfo from "../../src/components/ProductInfo";
 const Post = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [item, setItem] = useState<DosmeticObjData | []>([]);
+  const [item, setItem] = useState<DosmeticObjData | {}>({});
   const API_URL = `http://makeup-api.herokuapp.com/api/v1/products/${id}.json`;
 
   function getData() {

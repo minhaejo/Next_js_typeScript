@@ -11,7 +11,7 @@ import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [apiData, setApiData] = useState<DosmeticData | []>([]);
+  const [apiData, setApiData] = useState<DosmeticData>([]);
   const API_URL =
     "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
   function getData() {

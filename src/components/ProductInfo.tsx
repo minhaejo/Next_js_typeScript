@@ -2,11 +2,17 @@ import React, { FC } from "react";
 import { DosmeticObjData } from "./model/dosmeticData";
 
 interface Props {
-  item: DosmeticObjData | [];
+  item: DosmeticObjData;
 }
 const ProductInfo: FC<Props> = ({ item }) => {
-  console.log(item);
-  return <div></div>;
+  return (
+    <>
+      <div>
+        <img src={item.image_link} alt="" />
+        <p>{item.id}</p>
+      </div>
+    </>
+  );
 };
 
 export default ProductInfo;
