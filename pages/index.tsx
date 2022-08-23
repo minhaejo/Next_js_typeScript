@@ -7,8 +7,6 @@ import { Dimmer, Divider, Header, Loader, Segment } from "semantic-ui-react";
 import ItemList from "../src/components/ItemList";
 import { DosmeticData } from "../src/components/model/dosmeticData";
 
-import styles from "../styles/Home.module.css";
-
 const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [apiData, setApiData] = useState<DosmeticData>([]);
@@ -41,7 +39,6 @@ const Home: NextPage = () => {
           <ItemList apiData={apiData.slice(0, 9)} />
           <Divider />
           <Header style={{ marginLeft: "10px" }}>신상품</Header>
-
           <ItemList apiData={apiData.slice(9)} />
           <Divider />
         </>

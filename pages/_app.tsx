@@ -6,12 +6,12 @@ import "semantic-ui-css/semantic.min.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <div style={{ width: "1000px", margin: "0 auto" }}>
       {/* 앱다음에 index호출 페이지와 컴포넌트차이 */}
       <Top />
-      <Component {...pageProps} />
+      <Component style={{ marginTop: 300 }} {...pageProps} />
       <Footer />
-    </>
+    </div>
   );
 }
 

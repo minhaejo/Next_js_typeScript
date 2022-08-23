@@ -1,7 +1,14 @@
 import React from "react";
+import { Divider } from "semantic-ui-react";
 
 const Footer = () => {
-  return <div>this is footer</div>;
+  return (
+    <Divider style={{ marginBottom: 50 }}>
+      <div style={{ textAlign: "center", marginTop: "60px" }}>
+        <strong>this is footer</strong>
+      </div>
+    </Divider>
+  );
 };
 
 export default Footer;

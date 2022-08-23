@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Loader } from "semantic-ui-react";
 
 import { DosmeticData, DosmeticObjData } from "./model/dosmeticData";
 import styles from ".//ItemList.module.css";

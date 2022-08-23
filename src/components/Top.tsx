@@ -10,7 +10,7 @@ const Top = () => {
       <Link href="/">
         <a>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <h1>
+            <h1 style={{ margin: 0 }}>
               <img
                 style={{ width: 100, borderRadius: "50%" }}
                 src="/images/mhLogo.jpeg"
