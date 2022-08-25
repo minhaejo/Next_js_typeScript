@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div style={{ width: "1000px", margin: "0 auto" }}>
       {/* 앱다음에 index호출 페이지와 컴포넌트차이 */}
       <Top />
+
       <Component style={{ marginTop: 300 }} {...pageProps} />
       <Footer />
     </div>

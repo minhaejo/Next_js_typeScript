@@ -3,8 +3,8 @@ import React from "react";
 import { Menu, MenuItemProps } from "semantic-ui-react";
 
 const Gnb = () => {
-  let activeItem = "home";
   const router = useRouter();
+  let activeItem;
 
   //data는 시멘틱 유아이에서 제공하는 데이터여서 추론을 사용해서 얻어왔고 임포트해왔음
   //data는 name ,active 이런 내부내용임
@@ -34,7 +34,7 @@ const Gnb = () => {
           onClick={goLink}
         />
         <Menu.Item
-          name="contact"
+          name="contact us"
           active={activeItem === "contact"}
           onClick={() => {
             router.push("/contact");
