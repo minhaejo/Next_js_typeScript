@@ -12,15 +12,11 @@ const ItemList: FC<Props> = ({ apiData }) => {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Grid
-          columns={3}
-          divided
-          style={{ display: "flex", justifyContent: "center" }}
-        >
+        <Grid columns={3} style={{ display: "flex", justifyContent: "center" }}>
           <Grid.Row style={{ textAlign: "center" }}>
             {apiData.map((item: DosmeticObjData) => (
               <Grid.Column key={item.id} style={{ boxShadow: "none" }}>
-                <Link href={`/view/${item.id}`}>
+                <Link href="/detail/[id]" as={`/detail/${item.id}`}>
                   <a>
                     <div
                       style={{
