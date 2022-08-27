@@ -1,8 +1,10 @@
 import axios from "axios";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import React, { FC } from "react";
+import { Loader } from "semantic-ui-react";
 import { DosmeticObjData } from "../../src/components/model/dosmeticData";
 
 import ProductInfo from "../../src/components/ProductInfo";
@@ -30,7 +32,7 @@ const Post: FC<Props> = ({ item, name }) => {
 };
 
 export default Post;
-
+//개발환경애선 계속 요청을 하기때문에 계속 흰 화면이 뜸
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {

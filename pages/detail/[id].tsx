@@ -5,8 +5,10 @@ import {
   GetStaticProps,
 } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import React, { FC } from "react";
+import { Loader } from "semantic-ui-react";
 import { DosmeticObjData } from "../../src/components/model/dosmeticData";
 
 import ProductInfo from "../../src/components/ProductInfo";
@@ -17,18 +19,27 @@ interface Props {
 }
 
 const Post: FC<Props> = ({ item, name }) => {
+  const router = useRouter();
+  console.log(router.isFallback);
+  if (router.isFallback) {
+    return (
+      <div style={{ padding: "100px 0" }}>
+        <Loader active inline="centered">
+          loading
+        </Loader>
+      </div>
+    );
+  }
   return (
     <div>
-      {item && (
-        <>
-          <Head>
-            <title>HOME | 코딩민해 </title>
-            <meta name="description" content={item.description}></meta>
-          </Head>
-          {name}환경입니다.
-          <ProductInfo item={item} />
-        </>
-      )}
+      <>
+        <Head>
+          <title>HOME | 코딩민해 </title>
+          <meta name="description" content={item.description}></meta>
+        </Head>
+        {name}환경입니다.
+        <ProductInfo item={item} />
+      </>
     </div>
   );
 };
@@ -41,18 +52,36 @@ export default Post;
 //getStaticPaths 와 getStaticProps 함께 사용해야 합니다
 //getStaticPaths , getServerSideProps 와 함께 사용할 수 없습니다 .
 export async function getStaticPaths() {
+  const apiUrl = process.env.apiUrl;
+  const res = await axios.get(apiUrl!);
+  const data = res.data;
   return {
-    paths: [
-      { params: { id: "740" } },
-      { params: { id: "730" } },
-      { params: { id: "729" } },
-    ],
+    // paths: [
+    //   { params: { id: "740" } },
+    //   { params: { id: "730" } },
+    //   { params: { id: "729" } },
+    // ],
+    paths: data.slice(0, 9).map((item: DosmeticObjData) => ({
+      params: {
+        id: item.id.toString(),
+      },
+    })),
     fallback: true, // can also be true or 'blocking'
     //빌드시에 만들어지는건 변함없음 //getStaticProps
     //저기에있는 3개 말고 나머지들은 최초 접속시에 생성
     //두번째부터 기록해서 정적 페이지 제공
   };
 }
+
+// csr = 서버의 과부화를 줄이고 대신 사용자의 네트워크속도를 의존해 매ㅔ 패에지마다 새롭게 하나씩 다그려
+
+// ssr = 서버에서 이미 만들어진 걸 가지고 와서 그랴ㅕ 여기선 두가지 선택사항 스테틱으로 만들건지 ,
+
+// 서버싸이드프롭스로 만든 최신화된 동적페이지 (서버과부화가 걸릴수도있어,계속)  html 양이 겁나많아 그리고 html그려지고 css레이아웃잡힌상태에서
+// 얘네가 서버에서 대기하고있었어
+
+// prerendering =   요청을받은시점에서  단한번 정적패ㅔ이시 생성 ,최신화된데이터 매번 생성
+
 // getStaticProps: 빌드 시 데이터를 fetch하여 static 페이지를 생성
 // getStaticPaths: pages/**/[id].tsx 형태의 동적 라우팅 페이지 중, 빌드 시에 static하게 생성할 페이지를 정함
 
@@ -66,7 +95,6 @@ export const getStaticProps = async (context: GetServerSidePropsContext) => {
   const apiUrl = `http://makeup-api.herokuapp.com/api/v1/products/${id}.json`;
   const res = await axios.get(apiUrl);
   const data = res.data;
-
   return {
     props: {
       item: data,
