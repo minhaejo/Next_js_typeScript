@@ -6,6 +6,14 @@ const Gnb = () => {
   const router = useRouter();
   let activeItem;
 
+  if (router.pathname === "/") {
+    activeItem = "home";
+  } else if (router.pathname === "about") {
+    activeItem = "about";
+  } else if (router.pathname === "admin") {
+    activeItem = "admin";
+  }
+
   //data는 시멘틱 유아이에서 제공하는 데이터여서 추론을 사용해서 얻어왔고 임포트해왔음
   //data는 name ,active 이런 내부내용임
   const goLink = (
@@ -38,6 +46,13 @@ const Gnb = () => {
           active={activeItem === "contact"}
           onClick={() => {
             router.push("/contact");
+          }}
+        />
+        <Menu.Item
+          name="admin"
+          active={activeItem === "admin"}
+          onClick={() => {
+            router.push("/admin");
           }}
         />
       </Menu>
