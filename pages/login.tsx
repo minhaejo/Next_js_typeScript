@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 
 export default function Login() {
   const router = useRouter();
+  //로그인함수
   function login() {
     axios.post("/api/login").then((res) => {
       if (res.status === 200) {
