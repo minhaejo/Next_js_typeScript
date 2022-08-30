@@ -29,7 +29,7 @@ const input: FC<Props> = ({
   text,
 }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
+    onChange(e);
   };
 
   return (
@@ -39,7 +39,7 @@ const input: FC<Props> = ({
         <input
           type={text}
           style={style}
-          value={value}
+          value={value} //다른컴포넌트에서
           placeholder={placeholder}
           onChange={handleInputChange}
         ></input>
