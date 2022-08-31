@@ -2,7 +2,6 @@ import axios, { Axios } from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
-import button from "../src/components/common/button";
 
 export default function Admin() {
   const [isLogin, setIsLogin] = useState(false);

@@ -4,13 +4,13 @@ import React, { FC } from "react";
 interface Props {
   type: "link" | "button";
   style?: object; //스타일 오브젝트
-  clickFunction?: React.MouseEventHandler<HTMLButtonElement>;
+  clickFunction: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode; // 자식노드 옵셔널
   className?: string; //css
   href?: string; // 이동할주소 next/link
 }
 
-const button: FC<Props> = ({
+const Button: FC<Props> = ({
   style,
   clickFunction = () => {},
   href = "/", //기본 base URl
@@ -52,4 +52,4 @@ const button: FC<Props> = ({
   );
 };
 
-export default button;
+export default Button;

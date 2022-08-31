@@ -17,6 +17,7 @@ const ItemList: FC<Props> = ({ apiData }) => {
             {apiData.map((item: DosmeticObjData) => (
               <Grid.Column key={item.id} style={{ boxShadow: "none" }}>
                 <Link href="/detail/[id]" as={`/detail/${item.id}`}>
+                  {/* as={`/detail/${item.id}`} */}
                   <a>
                     <div
                       style={{

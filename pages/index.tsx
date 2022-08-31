@@ -3,10 +3,12 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Dimmer, Divider, Header, Loader, Segment } from "semantic-ui-react";
+import { Divider, Header, Loader, Segment } from "semantic-ui-react";
 import ItemList from "../src/components/ItemList";
 import { DosmeticData } from "../src/components/model/dosmeticData";
 import { env } from "process";
+import Button from "../src/components/common/Button";
+import Input from "../src/components/common/Input";
 
 interface Props {
   list: DosmeticData;
@@ -26,6 +28,26 @@ const Home: NextPage<Props> = ({ list }) => {
         <Header style={{ paddingTop: "10px", marginLeft: "10px" }}>
           베스트상품
         </Header>
+        <Button
+          style={{
+            width: 100,
+            height: 50,
+            backgroundColor: "pink",
+            color: "red",
+          }}
+          type={"button"}
+          clickFunction={() => {
+            console.log("clicked");
+          }}
+        ></Button>
+        <Input
+          type="text"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            console.log(e.target.value);
+          }}
+          isFocus={false}
+        ></Input>
+
         <Divider />
         <ItemList apiData={list.slice(0, 9)} />
         <Divider />

@@ -8,9 +8,9 @@ const Gnb = () => {
 
   if (router.pathname === "/") {
     activeItem = "home";
-  } else if (router.pathname === "about") {
+  } else if (router.pathname === "/about") {
     activeItem = "about";
-  } else if (router.pathname === "admin") {
+  } else if (router.pathname === "/admin") {
     activeItem = "admin";
   }
 
